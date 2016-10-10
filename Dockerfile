@@ -1,5 +1,11 @@
-FROM nginx:alpine
-RUN rm /etc/nginx/nginx.conf
-COPY nginx.conf /etc/nginx
+FROM node:6
 
-COPY . /usr/share/nginx/html
+WORKDIR /app
+Add . /app
+
+# install node packages
+RUN npm install
+
+EXPOSE 8080
+
+CMD ["npm", "start"]
